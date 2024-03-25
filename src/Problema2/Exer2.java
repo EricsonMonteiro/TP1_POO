@@ -7,7 +7,7 @@ public class Exer2 {
 
 
 
-    public class exer2
+
         public void main(String[] args) {
             ArrayList<Point> points = new ArrayList<>();
             Scanner scanner = new Scanner(System.in);

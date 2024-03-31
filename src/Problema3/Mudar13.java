@@ -8,10 +8,10 @@ public class Mudar13 {
         } else if (letra >= 'A' && letra <= 'Z') {
             return (char) ((letra - 'A' + 13) % 26 + 'A');
         } else {
-            return  System.out.println("Essa letra",+ letra + "nao pertence ao alfabeto");
+            System.out.println("Essa letra " + letra + " nao pertence ao alfabeto");
+            return ' '; // retorna um caractere vazio
         }
     }
-
 
     public static String rodarTexto(String textooriginal) {
         String textonovo = "";
@@ -22,5 +22,3 @@ public class Mudar13 {
         return textonovo;
     }
 }
-
-

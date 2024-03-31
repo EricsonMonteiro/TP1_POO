@@ -9,26 +9,24 @@ public class Cannonball {
     private double velocidade_x;
     private double velocidade_y;
 
-
     public Cannonball(double x, double y) {
         this.x = x;
-        this.y = 0;
+        this.y = y;
         this.velocidade_x = 0;
         this.velocidade_y = 0;
     }
-
 
     public void move(double deltaSec) {
         double dt = deltaSec;
         double g = -9.81;
 
         double dx = velocidade_x * dt;
-        double dy =velocidade_y * dt + 0.5 * g * dt * dt;
+        double dy = velocidade_y * dt + 0.5 * g * dt * dt;
 
-        x = dx;
-        y = dy;
+        x += dx; // Atualiza a posição corretamente
+        y += dy; // Atualiza a posição corretamente
 
-        vy = vy + (-9.81) * dt;
+        velocidade_y += g * dt; // Atualiza a velocidade corretamente
     }
 
     public Point getLocation() {
@@ -37,20 +35,18 @@ public class Cannonball {
         return new Point(x_inteira, y_inteira);
     }
 
-
     public ArrayList<Point> shoot(double alpha, double v, double deltaSec) {
-        ArrayList<Point> posicao = new ArrayList<Point>();
+        ArrayList<Point> posicoes = new ArrayList<Point>(); // Renomeado para evitar conflito de nomes
         double radian = Math.toRadians(alpha);
         velocidade_x = v * Math.cos(radian);
         velocidade_y = v * Math.sin(radian);
 
-        while (int y >= 0) {
+        while (y >= 0) { // Condição corrigida
             move(deltaSec);
-            Point posicao = getposicao();
-            posicao.add(posicao);
+            Point posicao = getLocation(); // Chamada corrigida para getLocation()
+            posicoes.add(posicao); // Adiciona a posição à lista corretamente
         }
 
-        return posicao;
+        return posicoes;
     }
 }
-
